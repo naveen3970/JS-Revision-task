@@ -1,0 +1,21 @@
+<!-- 11. Get Full URL -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Get Full URL
+</title>
+</head>
+<body>
+     <div>
+            <button type="submit" id="button" onclick="geturl()">getURL</button>
+        </div>
+        <div id="result"></div>
+</body>
+<script>
+    function geturl(){
+        document.getElementById("result").innerHTML=" URL for this page is "+window.location.href
+    }
+</script>
+</html>

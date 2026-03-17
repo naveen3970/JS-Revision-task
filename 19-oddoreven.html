@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <form action="">
+        <div>
+            <label for=""> Enter the Number:</label>
+            <input type="text" id="input">
+        </div>
+        <div id="errorCheck"></div>
+        <button type="button" id="button">Check</button>
+        <div id="result"></div>
+    </form>
+        <script>
+            const input=document.getElementById("input")
+    const error=document.getElementById("errorCheck")
+    const button=document.getElementById("button")
+    const result=document.getElementById("result")
+    isValid=true
+function validation(){
+ 
+    if(input.value==="" ){
+    error.innerHTML="Enter the Number "
+    isValid=false
+    return isValid
+}
+
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",()=>{
+    if(validation()){
+        let num=input.value
+        if(num%2===0){
+        result.innerHTML=`the number ${num} is even`
+        }
+        else{
+            result.innerHTML=`the number ${num} is odd`
+        }
+    }
+})
+</script>
+</body>
+</html>

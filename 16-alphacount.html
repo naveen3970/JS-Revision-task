@@ -1,0 +1,75 @@
+<!-- 15. Palindrome Checker -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String
+</title>
+</head>
+<body>
+    <body>
+    <form action="">
+        <div>
+            <label for=""> Enter the string:</label>
+            <input type="text" id="input">
+        </div>
+        <div id="errorCheck"></div>
+        <button type="button" id="button">Check palindrome </button>
+        <div id="result"></div>
+    </form>
+    <script>
+    const input=document.getElementById("input")
+    const error=document.getElementById("errorCheck")
+    const button=document.getElementById("button")
+    const result=document.getElementById("result")
+    isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the string "
+    isValid=false
+    return isValid
+}
+else if(input.value.includes(" ")){
+    error.innerHTML="Enter only one string "
+    isValid=false
+    return isValid
+}
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",(e)=>{
+   e.preventDefault()
+    if(validation()){
+        let text=input.value.toLowerCase()
+
+        let vowelcount=0
+        let consonantcount=0
+for (let i = 0; i < text.length; i++) {
+ if(text.charAt(i)==='a'||text.charAt(i)==='e'||text.charAt(i)==='i'||text.charAt(i)==='o'||text.charAt(i)==='u'){
+    vowelcount++
+ }
+ else{
+    consonantcount++
+ }
+    
+}
+let br = document.createElement('br');
+        result.appendChild(br);
+        
+result.innerHTML+=`vowels count: ${vowelcount}`
+result.innerHTML+=` consonant count: ${consonantcount}`
+
+
+
+    }
+   
+})
+</script>
+</body>
+</body>
+</html>

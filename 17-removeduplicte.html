@@ -1,0 +1,61 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replace character</title>
+ </head>
+ <body>
+   <form action="">
+        <div>
+            <label for=""> Enter the Array:</label>
+            <input type="text" id="input">
+        </div>
+                
+        <div id="errorCheck"></div>
+        <button type="button" id="replace">Next</button>
+        <div id="result"></div>
+    </form>
+ </body>
+ <script>
+    let input=document.getElementById("input")
+    let error=document.getElementById("errorCheck")
+    let button=document.getElementById("replace")
+    let result=document.getElementById("result")
+        isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the Number "
+    isValid=false
+    return isValid
+}
+
+
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",(e)=>{
+    e.preventDefault()
+    if(validation()){
+        let val=input.value
+        let arr=val.split(",")
+let array = arr.reduce(function (acc, curr) {
+    if (!acc.includes(curr)) {
+        acc.push(curr);
+    }
+    
+    return acc;
+}, []);
+
+result.innerHTML=array
+        
+
+    }
+})
+ </script>
+ </html>

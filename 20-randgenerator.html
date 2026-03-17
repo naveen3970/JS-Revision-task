@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <label for=""> Enter the minimum range:</label>
+            <input type="text" id="min">
+        </div>
+        <div>
+            <label for=""> Enter the maximum range :</label>
+            <input type="text" id="max">
+        </div>
+        <div id="errorCheck"></div>
+        <button type="button" id="button">Generate</button>
+        <div id="result"></div>
+    </form>
+    <script>
+        const minrange = document.getElementById("min")
+        const maxrange = document.getElementById("max")
+        const error = document.getElementById("errorCheck")
+        const button = document.getElementById("button")
+        const result = document.getElementById("result")
+        button.addEventListener("click",()=>{
+                let min=minrange.value
+                let max=maxrange.value
+                let val=Math.floor(Math.random() * (max - min + 1) + min);
+                console.log(val);
+        })
+     
+    </script>
+</body>
+
+</html>

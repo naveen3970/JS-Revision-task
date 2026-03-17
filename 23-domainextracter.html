@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label for="text">Enter the mail id</label>
+        <input type="email" name="email" id="emailInput">
+    </div>
+    <div>
+        <button type="button" id="button">Extract</button>
+    </div>
+    <div id="output"> </div>
+    <div id="error"> </div>
+    <script>
+        const email = document.getElementById("emailInput")
+        const button = document.getElementById("button")
+        const output = document.getElementById("output")
+        const error = document.getElementById("error")
+        let isvalid = true
+        function validate() {
+            if (email.value === "" || !email.value.includes('@')) {
+                error.innerHTML = "please enter the valid Email"
+                isvalid = false
+                return isvalid
+            }
+            else {
+                error.innerHTML = ""
+                isvalid = true
+                return isvalid
+            }
+        }
+        button.addEventListener("click", () => {
+            if (validate()) {
+                let emailvalue = email.value
+                for (let i = 0; i < emailvalue.length; i++) {
+                    if (emailvalue.charAt(i) === '@') {
+                        let domain=emailvalue.slice(i+1,emailvalue.length)
+                        output.innerHTML= "The Domain is "+domain
+                        return
+                    }
+
+                }
+                
+            }
+
+        })
+    </script>
+</body>
+
+</html>

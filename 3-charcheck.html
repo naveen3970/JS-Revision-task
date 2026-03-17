@@ -1,0 +1,58 @@
+<!-- 3. Check First & Last Character Same -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> First & Last Character checker</title>
+</head>
+<body>
+    <form action="">
+        <div>
+            <label for=""> Enter the string:</label>
+            <input type="text" id="input">
+        </div>
+        <div id="errorCheck"></div>
+        <button type="button" id="button">Check</button>
+        <div id="result"></div>
+    </form>
+    <script>
+    const input=document.getElementById("input")
+    const error=document.getElementById("errorCheck")
+    const button=document.getElementById("button")
+    const result=document.getElementById("result")
+    isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the string "
+    isValid=false
+    return isValid
+}
+else if(input.value.includes(" ")){
+    error.innerHTML="Enter only one string "
+    isValid=false
+    return isValid
+}
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",(e)=>{
+   e.preventDefault()
+    if(validation()){
+       let text=input.value
+       if(text.charAt(0)===text.charAt(text.length-1)){
+result.innerHTML="both first and last characters are same"
+       }
+       else{
+        result.innerHTML="first and last characters are not same"
+       }
+    }
+   
+})
+</script>
+</body>
+</html>

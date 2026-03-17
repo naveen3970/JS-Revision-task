@@ -1,0 +1,65 @@
+<!-- 1. Find Largest & Smallest Word -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+      <div>
+      <label for="sentence">Enter the sentence</label>
+    <input type="text" name="text" id="input">
+  </div>
+  <div id="inputError">
+  </div>
+  <div>
+    <button type="button" id="button">Find</button>
+  </div>
+  <div id="maxlength">
+
+  </div>
+  <div id="minlength">
+
+  </div>
+</form>
+</body>
+<script>
+const sentence=document.getElementById("input")
+isValid=true
+function validation(){
+    if(sentence.value===""){
+    document.getElementById("inputError").innerHTML="Enter the sentence "
+    isValid=false
+    return isValid
+}
+else{
+   
+    document.getElementById("inputError").innerHTML=""
+    isValid=true
+     return isValid
+} 
+}
+
+
+document.getElementById("button").addEventListener("click",()=>{
+    if(validation()){
+let input=sentence.value
+let arr=input.split(" ")
+     
+
+const max = arr.reduce((acc, initial) => {
+  return initial.length > acc.length ? initial : acc;
+}, arr[0]); 
+const min = arr.reduce((acc, initial) => {
+  return initial.length < acc.length ? initial : acc;
+}, arr[0]); 
+document.getElementById("maxlength").innerHTML="Max Length word: "+max
+
+   document.getElementById("minlength").innerHTML="Min Length word: "+min
+
+    }
+})
+</script>
+</html>

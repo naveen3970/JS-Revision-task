@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live character count</title>
+</head>
+
+<body>
+    <div>
+        <label for="text">Description</label>
+        <textarea name="text" id="input"></textarea>
+    </div>
+    <div id="output"> </div>
+</body>
+<script>
+    const input = document.getElementById("input")
+    const error = document.getElementById("error")
+    const output = document.getElementById("output")
+    input.addEventListener("input", (e) => {
+        let totalcount = 50
+        let count = e.target.value.length
+        if (totalcount <= count) {
+            output.innerHTML="the limit is exist"
+
+        }
+        else {
+            output.innerHTML="count"+count
+        }
+
+
+
+    })
+</script>
+
+</html>

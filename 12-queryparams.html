@@ -1,0 +1,36 @@
+<!--12. Get Query parameters -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Get Query parameters
+</title>
+</head>
+<body>
+     <div>
+            <button type="submit" id="button" onclick="geturl()">Get params</button>
+        </div>
+        <div id="result"></div>
+        <div id="result1"></div>
+</body>
+<script>
+    function geturl(){
+        let url=new URL("http://www.mitrahsoft.com/?technology=coldfusion&people=veryNice")
+        let tech='technology'
+        let people='people'
+       let result=url.searchParams.get(tech)
+        if (result !== null) {
+    document.getElementById("result").innerHTML= tech + ' is: ' + result
+} else {
+    document.getElementById("result").innerHTML=tech +' not found in the query string.'
+}
+  
+       let res=url.searchParams.get(people)
+        if (result !== null) {
+    document.getElementById("result1").innerHTML= people + ' is: ' + res
+} else {
+    document.getElementById("result1").innerHTML=people +' not found in the query string.'
+}  } 
+</script>
+</html>

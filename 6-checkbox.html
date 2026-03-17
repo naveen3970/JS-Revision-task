@@ -1,0 +1,66 @@
+<!-- checkbox controls -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox controls</title>
+</head>
+
+<body>
+    <form action="">
+        <div class="options_box">
+        <div>
+            <input type="checkbox" class="check">
+            <label for="option">option 1</label>
+        </div>
+        <div>
+            <input type="checkbox" class="check">
+            <label for="option">option 2</label>
+        </div>
+        <div>
+            <input type="checkbox" class="check">
+            <label for="option">option 3</label>
+        </div>
+        <div>
+            <input type="checkbox" class="check">
+            <label for="option">option 4</label>
+        </div>
+        <div>
+            <input type="checkbox" class="check">
+            <label for="option">option 5</label>
+        </div>
+    </div>
+    <div>
+        <button type="button" id="checked" onclick="check()">Check All</button>
+    </div>
+    <div>
+        <button type="reset" id="unchecked">Uncheck All</button>
+    </div>
+    <div>
+        <button type="button" id="toggle" onclick="t()">Toggle</button>
+    </div>
+    </form>
+</body>
+<script>
+    function check() {
+        let checkboxes = document.querySelectorAll('.check');
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
+        }
+    }
+
+    function t() {
+
+    const checkboxes = document.querySelectorAll('.check');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = !checkbox.checked;
+    });
+}
+
+
+    
+</script>
+
+</html>

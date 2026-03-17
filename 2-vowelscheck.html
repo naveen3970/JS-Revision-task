@@ -1,0 +1,64 @@
+<!-- Vowel or Not -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vowel checker</title>
+</head>
+<body>
+    <form action="">
+<div>
+    <label for="">
+    Enter the letter:
+</label>
+</div>
+<div>
+    <input type="text" id="letter">
+</div>
+
+<button id="valid">check</button>
+<div id="errorCheck"></div>
+<div id="result"></div>
+    </form>
+</body>
+<script>
+    const input=document.getElementById("letter")
+    const error=document.getElementById("errorCheck")
+    const button=document.getElementById("valid")
+    const result=document.getElementById("result")
+    isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the letter "
+    isValid=false
+    return isValid
+}
+else if(input.value.length>1){
+    error.innerHTML="Enter only one letter "
+    isValid=false
+    return isValid
+}
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",(e)=>{
+   e.preventDefault()
+    if(validation()){
+        let letter=input.value.toLowerCase()
+       if(letter==='a'||letter==='e'||letter==='i'||letter==='o'||letter==='u'){
+ result.innerHTML=`Letter "${letter}" is vowel`
+       }
+        else{
+        result.innerHTML=`Letter "${letter}" is not a vowel`
+    }
+    }
+   
+})
+</script>
+</html>

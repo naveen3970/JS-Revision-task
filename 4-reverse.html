@@ -1,0 +1,64 @@
+<!-- 4. Reverse String -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String
+</title>
+</head>
+<body>
+    
+    <form action="">
+        <div>
+            <label for=""> Enter the string:</label>
+            <input type="text" id="input">
+        </div>
+        <div id="errorCheck"></div>
+        <button type="button" id="button">Check</button>
+        <div id="result"></div>
+    </form>
+    <script>
+    const input=document.getElementById("input")
+    const error=document.getElementById("errorCheck")
+    const button=document.getElementById("button")
+    const result=document.getElementById("result")
+    isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the string "
+    isValid=false
+    return isValid
+}
+else if(input.value.includes(" ")){
+    error.innerHTML="Enter only one string "
+    isValid=false
+    return isValid
+}
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+button.addEventListener("click",(e)=>{
+   e.preventDefault()
+    if(validation()){
+        let text=input.value
+
+        let string=""
+for (let i = 0; i < text.length; i++) {
+string=text.charAt(i)+ string
+    
+}
+result.innerHTML="Reversed string:"+string;
+
+
+    }
+   
+})
+</script>
+</body>
+</body>
+</html>

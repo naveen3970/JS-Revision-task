@@ -1,0 +1,95 @@
+<!-- 10. Registration Form -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form
+    </title>
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <label for="fName">First Name <span>*</span></label>
+            <input type="text" id="fName" >
+        </div>
+        <div>
+            <label for="lName"> Last Name<span>*</span></label>
+            <input type="text" id="lName" >
+        </div>
+        <div>
+            <label for="email"> Email<span>*</span></label>
+            <input type="email" id="email" >
+        </div>
+        <div>
+            <label for="phone"> Phone Number<span>*</span></label>
+            <input type="text" id="phone" >
+        </div>
+        <div>
+            <label for="postal"> Postal Code</label>
+            <input type="text" id="zipcode">
+        </div>
+        <div>
+            <label for="address"> Address</label>
+            <textarea name="address" id="address"></textarea>
+        </div>
+        <div>
+            <button type="submit" id="button">submit</button>
+        </div>
+        <div id="errorCheck"></div>
+        <div id="result"></div>
+    </form>
+    <script>
+        const fName = document.getElementById("fName")
+        const lName = document.getElementById("lName")
+        const email = document.getElementById("email")
+        const phone = document.getElementById("phone")
+        const zipcode = document.getElementById("zipcode")
+        const Address = document.getElementById("address")
+        const button =document.getElementById("button")
+        const error=document.getElementById("errorCheck")
+ const result=document.getElementById("result")
+
+
+
+        isValid = true
+        function validation() {
+            if (fName.value === "") {
+                error.innerHTML = "First Name Should not be empty "
+                isValid = false
+                return isValid
+            }
+            else if (lName.value === "") {
+                error.innerHTML = "Last Name Should not be empty "
+                isValid = false
+                return isValid
+            }
+            else if (email.value === "") {
+                error.innerHTML = "Email Should not be empty "
+                isValid = false
+                return isValid
+            }
+            else if (phone.value === "") {
+                error.innerHTML = "Phone number Should not be empty "
+                isValid = false
+                return isValid
+            }
+
+            else {
+
+                error.innerHTML = ""
+                isValid = true
+                return isValid
+            }
+        }
+        button.addEventListener("click",()=>{
+
+            validation()
+            result.innerHTML="Form data submitted successfully "
+        })
+    </script>
+</body>
+
+</html>

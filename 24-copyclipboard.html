@@ -1,0 +1,59 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>copy to clipboard</title>
+ </head>
+ <body>
+     <form action="">
+        <div>
+            <label for=""> Enter the sentence:</label>
+            <textarea name="words" id="input"></textarea>
+        </div>
+        <div id="errorCheck"></div>
+       
+         <button type="button" id="button">Copy</button>
+        <div id="result"></div>
+    </form>
+    <script>
+            const input=document.getElementById("input")
+    const error=document.getElementById("errorCheck")
+        const button=document.getElementById("button")
+    const result=document.getElementById("result")
+        isValid=true
+function validation(){
+    if(input.value==="" ){
+    error.innerHTML="Enter the Number "
+    isValid=false
+    return isValid
+}
+
+
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
+// button.addEventListener("click",()=>{
+//     if(validation()){
+//         navigator.clipboard.writeText(input.value).then((a)=>{
+//             console.log(a);
+            
+//         })
+        
+//     }
+// })
+
+  document.querySelector('#button').addEventListener('click', async () => {
+    const textToCopy = input.value
+    await copyTextToClipboard(textToCopy);
+  });
+</script>
+
+    </script>
+ </body>
+ </html>
