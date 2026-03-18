@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toggle switch</title>
+    <style>
+         .dark{
+            background-color: #222;
+            color: #e6e6e6;
+        }
+    </style>
 </head>
 <body>
     <button onclick="togglefunction()">Toggle dark mode</button>
     <script>
         function togglefunction(){
-document.body.classList.toggle("dark-mode")
+ let element = document.body;
+            element.classList.toggle("dark");
         }
     </script>
 </body>
