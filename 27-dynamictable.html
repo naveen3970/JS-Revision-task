@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+    <div>
+        <label for="name">Enter the name:</label>
+        <input type="text" id="name">
+    </div>
+    <div>
+        <label for="age">Enter the age:</label>
+        <input type="text" id="age">
+    </div>
+    <div>
+        <button type="button" id="button">add</button>
+    </div>
+      <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <script>
+        const name = document.getElementById("name")
+        const age = document.getElementById("age")
+        const button = document.getElementById("button")
+        button.addEventListener("click", () => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${name.value}</td>
+                <td>${age.value}</td>`
+            tableBody.appendChild(row);
+        })
+
+
+    </script>
+</body>
+
+</html>
