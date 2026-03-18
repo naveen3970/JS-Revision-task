@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter</title>
+</head>
+
+<body>
+    <div>
+        <label for="input">Enter the product:</label>
+        <input type="text" id="value">
+        <div id="result"></div>
+    </div>
+    <script>
+        const input = document.getElementById("value")
+        let arr = ['mango', 'apple', 'green apple', 'custered apple', 'pine apple','orange','potato']
+        input.addEventListener("input", (e) => {
+                let output = arr.filter((item) => {
+                    if (item.includes(e.target.value))
+               return item
+            })
+            document.getElementById("result").innerHTML=output  
+        })
+    </script>
+</body>
+
+</html>

@@ -38,22 +38,12 @@ else{
      return isValid
 }
 }
-// button.addEventListener("click",()=>{
-//     if(validation()){
-//         navigator.clipboard.writeText(input.value).then((a)=>{
-//             console.log(a);
-            
-//         })
-        
-//     }
-// })
-
-  document.querySelector('#button').addEventListener('click', async () => {
-    const textToCopy = input.value
-    await copyTextToClipboard(textToCopy);
-  });
-</script>
-
+button.addEventListener("click",()=>{
+    if(validation()){
+        navigator.clipboard.writeText(input.value)
+        result.innerHTML=input.value
+    }
+})
     </script>
  </body>
  </html>
