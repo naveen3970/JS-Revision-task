@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+</head>
+<body>
+    <form >
+        <div>
+            <label for="text">Enter the text</label>
+            <input type="text" id="textInput" autofocus oninput="processDebounce()">
+        </div>
+        <div id="output"></div>
+    </form>
+    <script>
+        function processDebounce(){
+            const text=document.getElementById("textInput")
+            const output=document.getElementById("output")
+            function debounce(fun,delay) {
+             let time
+            return function(...args){
+                clearTimeout(time)
+                time=setTimeout(()=>{
+                    fun.apply(this,args)
+                },delay)
+            }
+        }
+        function fun(val){
+            output.innerHTML= val
+        }
+        let debounceElement=debounce(fun,500)
+        debounceElement(text.value)
+ 
+
+        }
+    </script>
+</body>
+</html>
