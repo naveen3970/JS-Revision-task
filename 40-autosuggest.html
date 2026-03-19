@@ -1,0 +1,52 @@
+
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+            <label for="text">Enter the text</label>
+            <input type="text" id="textInput" autofocus oninput="processDebounce()">
+        </div>
+    <ul id="list"></ul>
+    <script >
+
+ function processDebounce(){
+
+            const text=document.getElementById("textInput")
+            const output=document.getElementById("output")
+            let countries = ["India","Indonesia","USA","UK"];
+            function debounce(fun,delay) {
+             let time
+            return function(...args){
+                clearTimeout(time)
+                time=setTimeout(()=>{
+                    fun.apply(this,args)
+                },delay)
+            }
+        }
+        function fun(val){
+            let result = countries.filter(c => c.toLowerCase().includes(val));
+ 
+let list = document.getElementById("list");
+list.innerHTML = "";
+ 
+result.forEach(c=>{
+    let li = document.createElement("li");
+    li.innerText = c;
+    list.appendChild(li);
+});
+        }
+        let debounceElement=debounce(fun,500)
+        debounceElement(text.value)
+ 
+
+        }
+</script>
+</body>
+</html>
