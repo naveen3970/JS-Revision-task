@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+</head>
+<body>
+    <form >
+        <div>
+            <label for="text">Enter the text</label>
+            <input type="text" id="textInput" oninput="processDebounce()">
+        </div>
+        <div id="output"></div>
+    </form>
+    <script>
+        function processDebounce(){
+            const text=document.getElementById("textInput")
+            const searchdata = (data) => {  
+ fetch("https://api.github.com/search/users?q=data")
+.then(res => res.json())
+.then(data => {
+    document.getElementById("output").innerText =data.items.map(u => u.login).join(", ");
+})
+  .catch(err => console.log(err))
+}
+function debounce(fn,delay) {
+    let timer
+    return function (...args){
+        clearTimeout(timer)
+        timer=setTimeout(()=>{
+            fn.apply(this,args)
+        },delay)
+    }
+
+}
+const result = debounce(searchdata, 500);
+result(text.value)
+}
+    </script>
+</body>
+</html>
