@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazy loading</title>
+    <style>
+            img{
+                display: block;
+            width:200px;
+height:25rem;
+
+        }
+</style>
+</head>
+<body>
+    <img data-src="https://picsum.photos/200?1" class="lazy">
+<img data-src="https://picsum.photos/200?2" class="lazy">
+<img data-src="https://picsum.photos/200?3" class="lazy">
+<img data-src="https://picsum.photos/200?4" class="lazy">
+<img data-src="https://picsum.photos/200?5" class="lazy">
+    <script>
+let imgs = document.querySelectorAll(".lazy");
+ 
+let observer = new IntersectionObserver((entries,o)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            let img = entry.target;
+            img.src = img.dataset.src;
+        }
+    });
+},{ threshold:0.2 });
+ 
+imgs.forEach(img=>observer.observe(img));
+</script>
+</body>
+</html>
+ 
