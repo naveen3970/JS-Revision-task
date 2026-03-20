@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="otp-container">
+    <input type="text" id="digit-1" maxlength="1" inputmode="numeric" autocomplete="one-time-code" />
+    <input type="text" id="digit-2" maxlength="1" inputmode="numeric" autocomplete="one-time-code" />
+    <input type="text" id="digit-3" maxlength="1" inputmode="numeric" autocomplete="one-time-code" />
+    <input type="text" id="digit-4" maxlength="1" inputmode="numeric" autocomplete="one-time-code" />
+</div>
+
+    <script>
+        document.querySelector('#digit-1').addEventListener('paste', (e) => {
+    e.preventDefault();
+    const data = e.clipboardData.getData('text').trim().split('');
+    const inputs = document.querySelectorAll('#otp-container input');
+    data.forEach((char, i) => { if (inputs[i]) inputs[i].value = char; });
+});
+
+    </script>
+</body>
+</html>
