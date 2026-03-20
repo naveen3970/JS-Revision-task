@@ -1,0 +1,42 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+        .box{
+width:100px;
+height:100px;
+border:1px solid black;
+        }
+        #ele{
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+        }
+    </style>
+<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+<p draggable="true" ondragstart="drag(event)" id="task1">Task 1</p>
+</div>
+ 
+<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<script >
+function allowDrop(e){ e.preventDefault(); }
+ 
+function drag(e){
+    e.dataTransfer.setData("text", e.target.id);
+}
+ 
+function drop(e){
+    e.preventDefault();
+    let data = e.dataTransfer.getData("text");
+    e.target.appendChild(document.getElementById(data));
+}
+</script>
+    </body>
+    </html>
