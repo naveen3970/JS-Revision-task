@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="internet">
+
+</div>
+<script>
+let online = navigator.onLine;
+if (online) {
+    
+    document.getElementById("internet").innerHTML = "Browser is online " 
+} else {
+    document.getElementById("internet").innerHTML = "Browser is offline "
+    
+}
+</script>
+</html>
+
