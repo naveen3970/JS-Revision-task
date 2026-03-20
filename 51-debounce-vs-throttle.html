@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        #btndiv{
+            position: fixed;
+
+        }
+    </style>
+</head>
+<body>
+<div id="btndiv">
+    <button type="button" onclick="d()">debounce</button>
+<button type="button" onclick="t()">throttle</button>
+<div id="debouncescroll">
+
+</div>
+<div id="throttlescroll">
+
+</div>
+</div>
+
+    <script>
+        function debounce(fn, delay){
+    let timer;
+    return function(){
+        clearTimeout(timer);
+        timer = setTimeout(()=>fn(), delay);
+    }
+}
+ 
+function throttle(fn, limit){
+    let wait=false;
+    return function(){
+        if(!wait){
+            fn();
+            wait=true;
+            setTimeout(()=>wait=false, limit);
+        }
+    }
+}
+function d(){
+    window.addEventListener("scroll",
+   
+    debounce(()=> console.log("Debounce:"+ window.scrollY+"px"),1000))
+
+
+} 
+function t(){
+
+    window.addEventListener("scroll",
+            throttle(()=>console.log("Throttle:"+ window.scrollY+"px"),3000))
+
+  
+}
+ 
+    </script>
+</body>
+</html>
