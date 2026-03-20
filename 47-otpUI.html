@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body>
+    <div class="container">
+        <label for="text">Enter the OTP</label>
+        <div id="otp" class="inputs">
+            <input class="input" type="text" autofocus inputmode="numeric" maxlength="1" autocomplete="one time" />
+            <input class="input" type="text" inputmode="numeric" maxlength="1" autocomplete="one time"/>
+            <input class="input" type="text" inputmode="numeric" maxlength="1" autocomplete="one time" />
+            <input class="input" type="text" inputmode="numeric" maxlength="1" autocomplete="one time"/>
+        </div>
+    </div>
+<script>
+const inputs = document.getElementById("otp");
+
+inputs.addEventListener("input", function (e) {
+    const target = e.target;
+    const val = target.value;
+
+    if (isNaN(val)) {
+        target.value = "";
+        return;
+    }
+
+    if (val != "") {
+        const next = target.nextElementSibling;
+        if (next) {
+            next.focus();
+        }
+    }
+});
+
+inputs.addEventListener("keyup", function (e) {
+    const target = e.target;
+    const key = e.key.toLowerCase();
+
+    if (key == "backspace" || key == "delete") {
+        target.value = "";
+        const prev = target.previousElementSibling;
+        if (prev) {
+            prev.focus();
+        }
+        return;
+    }
+});
+</script>
+</body>
+</html>
+
