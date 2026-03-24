@@ -5,17 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date and Time</title>
+    <style>
+          body {
+    background-color: rgb(223, 241, 241);
+   
+  }
+    #form {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+  #result{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #336e3d;
+  }
+      #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(55, 205, 243);
+    width: 60%;
+  }
+    </style>
  </head>
  <body>
-    <div>
-        <button type="button" onclick="date()">Get Date</button>
+   <form id="form">
+    <h1>Current Date And Time</h1>
+     <div>
+        <button type="button" id="button"  onclick="date()">Get Date</button>
     </div>
+    <div id="result"></div>
+   </form>
     <script>
         function date(){
             let time=Date.now()
             let currentTime=new Date(time)
             let localTime=currentTime.toLocaleString()
-            console.log(localTime);
+            document.getElementById("result").innerHTML="The Time is  "+localTime
 
             
         }

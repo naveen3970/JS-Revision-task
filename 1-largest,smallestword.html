@@ -1,65 +1,132 @@
 <!-- 1. Find Largest & Smallest Word -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+<style>
+  body {
+    background-color: rgb(106, 124, 124);
+    
+  }
+
+  #form {
+    background-color: bisque;
+    padding: 60px;
+    max-width: 500px;
+    margin: 300px auto;
+    border-radius: 20px;
+   
+  }
+
+  #inputError {
+    color: red;
+    font-size: larger;
+    text-align: center;
+    padding-top: 40px;
+  }
+  #maxlength{
+    font-size: larger;
+    text-align: center;
+    padding-top: 40px;
+  }
+  #minlength {
+
+    font-size: larger;
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 20px;
+    background-color: rgb(11, 218, 131);
+    width: 60%;
+  }
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+  }
+  label{
+    font-size: x-large;
+  }
+  #input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 20px; 
+    width: 50%;
+  }
+</style>
+
 <body>
-<form action="">
-      <div>
+
+  <form id="form">
+      <h1>
+    Find Largest and Smallest Word
+
+  </h1>
+    <div class="formInput">
       <label for="sentence">Enter the sentence</label>
-    <input type="text" name="text" id="input">
-  </div>
-  <div id="inputError">
-  </div>
-  <div>
-    <button type="button" id="button">Find</button>
-  </div>
-  <div id="maxlength">
+      
+    </div>
+        <div class="formInput">
+      
+      <input type="text" name="text" id="input">
+    </div>
+    
+    <div class="formInput">
+      <button type="button" id="button">Find</button>
+    </div>
+    <div id="inputError" class="formInput"></div>
+    <div id="maxlength" class="formInput">
 
-  </div>
-  <div id="minlength">
+    </div>
+    <div id="minlength" class="formInput">
 
-  </div>
-</form>
+    </div>
+  </form>
 </body>
 <script>
-const sentence=document.getElementById("input")
-isValid=true
-function validation(){
-    if(sentence.value===""){
-    document.getElementById("inputError").innerHTML="Enter the sentence "
-    isValid=false
-    return isValid
-}
-else{
-   
-    document.getElementById("inputError").innerHTML=""
-    isValid=true
-     return isValid
-} 
-}
+  const sentence = document.getElementById("input")
+  isValid = true
+  function validation() {
+    if (sentence.value === "") {
+      document.getElementById("inputError").innerHTML = "Enter the sentence "
+      isValid = false
+      return isValid
+    }
+    else {
+
+      document.getElementById("inputError").innerHTML = ""
+      isValid = true
+      return isValid
+    }
+  }
 
 
-document.getElementById("button").addEventListener("click",()=>{
-    if(validation()){
-let input=sentence.value
-let arr=input.split(" ")
-     
+  document.getElementById("button").addEventListener("click", () => {
+    if (validation()) {
+      let input = sentence.value
+      let arr = input.split(" ")
 
-const max = arr.reduce((acc, initial) => {
-  return initial.length > acc.length ? initial : acc;
-}, arr[0]); 
-const min = arr.reduce((acc, initial) => {
-  return initial.length < acc.length ? initial : acc;
-}, arr[0]); 
-document.getElementById("maxlength").innerHTML="Max Length word: "+max
 
-   document.getElementById("minlength").innerHTML="Min Length word: "+min
+      const max = arr.reduce((acc, initial) => {
+        return initial.length > acc.length ? initial : acc;
+      }, arr[0]);
+      const min = arr.reduce((acc, initial) => {
+        return initial.length < acc.length ? initial : acc;
+      }, arr[0]);
+      document.getElementById("maxlength").innerHTML = "Max Length word: " + max
+
+      document.getElementById("minlength").innerHTML = "Min Length word: " + min
 
     }
-})
+  })
 </script>
+
 </html>

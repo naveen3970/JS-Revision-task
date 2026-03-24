@@ -5,14 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>filter</title>
+        <style>
+          body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+    .form {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+  #result{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #c74d1d;
+  }
+ 
+
+    label {
+            font-size: x-large;
+        }
+
+        input {
+            padding: 17px;
+            font-size: large;
+            border-radius: 15px;
+            width: 50%;
+        }
+      
+         .formInput {
+            padding-top: 10px;
+            text-align: center;
+
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <label for="input">Enter the product:</label>
-        <input type="text" id="value">
-        <div id="result"></div>
-    </div>
+    <form class="form"> 
+
+        <div class="formInput">
+            <label for="input">Enter the product:</label>
+        </div>
+        <div class="formInput">
+            <input type="text" id="value">
+
+        </div>
+        <div id="result" class="formInput"></div>
+    </form>
     <script>
         const input = document.getElementById("value")
         let arr = ['mango', 'apple', 'green apple', 'custered apple', 'pine apple','orange','potato']

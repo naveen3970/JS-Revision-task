@@ -5,6 +5,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+        .container {
+            width: 40%;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        #ele {
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+            text-align: center;
+        }
+                 body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+   .label{
+    font-size: x-large;
+    background-color: white;
+  }
+  p{
+    padding-top: 7px;
+  }
+    </style>
     </head>
     <body>
         <style>
@@ -20,11 +45,28 @@ border:1px solid black;
         }
     </style>
 <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+     <div class="label">
+                <label for="text">TODO task</label>
+
+            </div>
 <p draggable="true" ondragstart="drag(event)" id="task1">Task 1</p>
+<p draggable="true" ondragstart="drag(event)" id="task1">Task 2</p>
+<p draggable="true" ondragstart="drag(event)" id="task1">Task 3</p>
+<p draggable="true" ondragstart="drag(event)" id="task1">Task 4</p>
 </div>
  
-<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+<div class="label">
+                <label for="text">Progressing task</label>
+
+            </div>
+</div>
+<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+<div class="label">
+                <label for="text">completed task</label>
+
+            </div>
+</div>
 <script >
 function allowDrop(e){ e.preventDefault(); }
  

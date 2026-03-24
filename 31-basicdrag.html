@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container{
-width:100px;
-height:100px;
-border:1px solid black;
+        .container {
+            width: 20%;
+            height: 300px;
+            border: 1px solid black;
         }
-        #ele{
+
+        #ele {
             display: flex;
             justify-content: center;
             padding-top: 100px;
+            text-align: center;
         }
+                 body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+   .label{
+    font-size: x-large;
+    background-color: white;
+  }
+  p{
+    padding-top: 7px;
+  }
     </style>
 </head>
-<body>
- <div id="ele">
-<div class="container"  ondrop="drop(event)" ondragover="allowDrop(event)">
-    <label for="text">Available items</label>
-    <p draggable="true" ondragstart="drag(event)" id="item1">Item 1</p>
- </div>
- 
- <div class="container"   ondrop="drop(event)" ondragover="allowDrop(event)">
-     <label for="text">selected items</label>
- </div>
- </div>
 
- 
- <script >
-     function allowDrop(e){ e.preventDefault(); }
- 
-function drag(e){
-     e.dataTransfer.setData("text", e.target.id);
- }
- 
- function drop(e){
-    e.preventDefault();
-    let data = e.dataTransfer.getData("text");
-     e.target.appendChild(document.getElementById(data));
-}
- </script>
- </body>
+<body>
+    <div id="ele">
+        <div class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="label">
+
+                <label for="text">Available items</label>
+            </div>
+            <p draggable="true" ondragstart="drag(event)" id="item1">Item 1</p>
+            <p draggable="true" ondragstart="drag(event)" id="item1">Item 2</p>
+            <p draggable="true" ondragstart="drag(event)" id="item1">Item 3</p>
+            <p draggable="true" ondragstart="drag(event)" id="item1">Item 4</p>
+        </div>
+
+        <div class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="label">
+                <label for="text">selected items</label>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function allowDrop(e) { e.preventDefault(); }
+
+        function drag(e) {
+            e.dataTransfer.setData("text", e.target.id);
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            let data = e.dataTransfer.getData("text");
+            e.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+
 </html>

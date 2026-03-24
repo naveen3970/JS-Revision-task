@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name">
+<input id="email">
+ 
+ <script>
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+ 
+name.value = localStorage.getItem("name") || "";
+email.value = localStorage.getItem("email") || "";
+ 
+name.oninput = ()=>localStorage.setItem("name", name.value);
+email.oninput = ()=>localStorage.setItem("email", email.value);
+</script>
+</body>
+</html>

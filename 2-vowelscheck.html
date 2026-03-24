@@ -6,21 +6,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vowel checker</title>
+    <style>
+  body {
+    background-color: rgb(106, 124, 124);
+  }
+
+  #form {
+    background-color: bisque;
+    text-align: center;
+    padding: 60px;
+    max-width: 400px;
+    margin: 40px auto;
+    border-radius: 20px;
+  
+  }
+
+  #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+    padding-top: 40px;
+  }
+  #valid {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 20px;
+    background-color: rgb(11, 218, 131);
+    width: 70%;
+  }
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+  }
+  label{
+    font-size: x-large;
+  }
+  #letter{
+    padding: 17px;
+    font-size: large;
+    border-radius: 20px; 
+    width: 60%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+</style>
 </head>
 <body>
-    <form action="">
-<div>
-    <label for="">
+    <form id="form">
+      <h1>Vowel Checker</h1>
+<div class="formInput">
+    <label for="letter">
     Enter the letter:
 </label>
 </div>
-<div>
+<div  class="formInput">
     <input type="text" id="letter">
 </div>
-
+<div  class="formInput">
 <button id="valid">check</button>
-<div id="errorCheck"></div>
-<div id="result"></div>
+</div>
+
+<div id="errorCheck"  class="formInput"></div>
+<div id="result"  class="formInput"></div>
     </form>
 </body>
 <script>

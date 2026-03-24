@@ -6,16 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reverse String
 </title>
+<style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  .form {
+    background-color: rgb(190, 166, 190);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+    #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(252, 252, 252);
+    width: 55%;
+  }
+
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+    
+  }
+  label{
+    font-size: x-large;
+  }
+    input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+
+</style>
 </head>
 <body>
     <body>
-    <form action="">
-        <div>
+    <form class="form">
+        <h1>Palindrome Checker</h1>
+        <div class="formInput">
             <label for=""> Enter the string:</label>
+        </div>
+        <div class="formInput">
             <input type="text" id="input">
+
         </div>
         <div id="errorCheck"></div>
-        <button type="button" id="button">Check palindrome </button>
+        <div class="formInput">
+
+            <button type="button" id="button">Check palindrome </button>
+        </div>
         <div id="result"></div>
     </form>
     <script>
@@ -46,7 +102,8 @@ button.addEventListener("click",(e)=>{
    e.preventDefault()
     if(validation()){
         let text=input.value
-
+let regex=/^[a-zA-Z]*$/
+if(regex.test(text)){
         let string=""
 for (let i = 0; i < text.length; i++) {
 string=text.charAt(i)+ string
@@ -60,6 +117,9 @@ if (text===string) {
 
 
     }
+else{
+    error.innerHTML="Enter only string"
+}}
    
 })
 </script>

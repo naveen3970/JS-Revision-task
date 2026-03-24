@@ -6,15 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Get Full URL
 </title>
+<style>
+          body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+    .form {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+  #result{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #c74d1d;
+  }
+      #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(69, 72, 73);
+    width: 60%;
+    color: white;
+  }
+    </style>
 </head>
 <body>
-     <div>
+<form class="form">
+    <h1>URL Of The Page</h1>
+         <div>
             <button type="submit" id="button" onclick="geturl()">getURL</button>
         </div>
         <div id="result"></div>
+</form>
 </body>
 <script>
     function geturl(){
+        event.preventDefault()
         document.getElementById("result").innerHTML=" URL for this page is "+window.location.href
     }
 </script>

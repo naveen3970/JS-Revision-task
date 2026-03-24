@@ -5,24 +5,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>replace character</title>
+    <style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  #form {
+    background-color: rgb(90, 89, 88);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+    #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #replace {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(55, 205, 243);
+    width: 60%;
+  }
+
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+    
+  }
+  label{
+    font-size: x-large;
+  }
+    input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+
+</style>
  </head>
  <body>
-   <form action="">
+   <form id="form">
+    <h1>Replace Element</h1>
+    <div>
+
+        <div class="formInput">
+            <label for=""> Enter the Array</label>
+        </div>
         <div>
-            <label for=""> Enter the Array:</label>
             <input type="text" id="input">
+
         </div>
-                <div>
+        <div class="formInput">
             <label for=""> Enter the position:</label>
+        </div>
+        <div>
             <input type="text" id="position">
+
         </div>
-                <div>
+        <div class="formInput">
             <label for=""> Enter the character:</label>
-            <input type="text" id="character">
         </div>
-        <div id="errorCheck"></div>
+        <div>
+            <input type="text" id="character">
+
+        </div>
+        <div id="errorCheck" class="formInput"></div>
         <button type="button" id="replace">Replace</button>
-        <div id="result"></div>
+        <div id="result" class="formInput"></div>
+    </div>
     </form>
  </body>
  <script>
@@ -35,7 +97,17 @@
         isValid=true
 function validation(){
     if(input.value==="" ){
-    error.innerHTML="Enter the Number "
+    error.innerHTML="Enter the Array of Number "
+    isValid=false
+    return isValid
+}
+else if(position.value===""){
+      error.innerHTML="Enter the position to Replace "
+    isValid=false
+    return isValid
+}
+else if(character.value===""){
+      error.innerHTML="Enter the character to Replace "
     isValid=false
     return isValid
 }

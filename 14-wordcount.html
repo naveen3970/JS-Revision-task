@@ -5,16 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wordCount</title>
+        <style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  .form {
+    background-color: rgb(190, 166, 190);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+    #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(252, 252, 252);
+    width: 55%;
+  }
+
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+    
+  }
+  label{
+    font-size: x-large;
+  }
+    textarea{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+
+</style>
  </head>
  <body>
-     <form action="">
-        <div>
-            <label for=""> Enter the sentence:</label>
+     <form class="form">
+        <h1>Word Count</h1>
+        <div class="formInput">
+            <label > Enter the sentence:</label>
+        </div>
+        <div class="formInput">
             <textarea name="words" id="input"></textarea>
+
         </div>
         <div id="errorCheck"></div>
-       
-         <button type="button" id="button">get wordcount</button>
+       <div class="formInput">
+
+           <button type="button" id="button">get wordcount</button>
+       </div>
         <div id="result"></div>
     </form>
     <script>

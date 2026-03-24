@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="list"></div>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+    <script>
+         let page = 1;
+ 
+function load(){
+ 
+fetch("https://jsonplaceholder.typicode.com/posts?_limit=10&_page="+page)
+.then(res=>res.json())
+.then(data=>{
+    document.getElementById("list").innerHTML =
+    data.map(d=>d.title).join("<br>");
+});
+}
+ 
+function next(){ page++; load(); }
+function prev(){ if(page>1) page--; load(); }
+ 
+load();
+    </script>
+</body>
+</html>

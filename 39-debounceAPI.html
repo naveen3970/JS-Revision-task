@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debounce</title>
+    <style>
+          body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+    .form {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+  #output{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #c74d1d;
+  }
+    label{
+    font-size: x-large;
+  }
+    input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 20px; 
+    width: 50%;
+  }
+    </style>
 </head>
 <body>
-    <form >
+    <form class="form">
         <div>
             <label for="text">Enter the text</label>
             <input type="text" id="textInput" oninput="processDebounce()">

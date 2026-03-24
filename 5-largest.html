@@ -5,16 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Largest Number</title>
+    <style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  #form {
+    background-color: rgb(90, 89, 88);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+    box-shadow: 20px;
+  }
+    #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(55, 205, 243);
+    width: 60%;
+  }
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+  }
+  label{
+    font-size: x-large;
+  }
+    #input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+</style>
  </head>
  <body>
-   <form action="">
-        <div>
+   <form id="form">
+    <h1>Largest Number In The Array</h1>
+        <div class="formInput">
             <label for=""> Enter the Numbers:</label>
+          
+        </div>
+        <div class="formInput">
+
             <input type="text" id="input">
         </div>
-        <div id="errorCheck"></div>
-        <button type="button" id="button">Check</button>
-        <div id="result"></div>
+        <div class="formInput">
+            <button type="button" id="button">Check</button>    
+        </div>
+        <div id="errorCheck" class="formInput"></div>
+        <div id="result" class="formInput"></div>
     </form>
     <script>
             const input=document.getElementById("input")
@@ -25,7 +78,7 @@
 function validation(){
  
     if(input.value==="" ){
-    error.innerHTML="Enter the Number "
+    error.innerHTML="Enter the array of numbers "
     isValid=false
     return isValid
 }
@@ -40,13 +93,19 @@ else{
 button.addEventListener("click",(e)=>{
     e.preventDefault()
     if(validation()){
+      let a=/^\d+(,\d+)*$/
         let val=input.value
-       
-        let numArray=val.split("")
+       if(a.test(val)){
+                let numArray=val.split(",")
         const max = numArray.reduce((acc, index) => {
   return index > acc ? index : acc;
 }, 0); 
 result.innerHTML="Largest Number: "+max
+       }
+       else{
+        error.innerHTML="Enter only the Numbers"
+       }
+
     }
 })
     </script>

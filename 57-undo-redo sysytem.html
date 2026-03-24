@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="text">Enter the text</label>
+    </div>
+    <div>
+        <input type="text" id="inputText" autofocus>
+    </div>
+
+ 
+<button onclick="undo()">Undo</button>
+<button onclick="redo()">Redo</button>
+ 
+<script>
+
+let input = document.querySelector("input");
+ 
+let undoStack = [];
+let redoStack = [];
+ 
+input.addEventListener("input", ()=>{
+    undoStack.push(input.value);
+});
+ 
+function undo(){
+    if(undoStack.length){
+        redoStack.push(input.value);
+        input.value = undoStack.pop();
+    }
+}
+ 
+function redo(){
+    if(redoStack.length){
+        undoStack.push(input.value);
+        input.value = redoStack.pop();
+    }
+}
+</script>
+</body>
+</html>

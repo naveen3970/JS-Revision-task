@@ -7,35 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form
     </title>
+    <style>
+        body {
+            background-color: rgb(223, 241, 241);
+        }
+
+        #form {
+            background-color: rgb(90, 89, 88);
+            text-align: center;
+ padding: 60px;
+            max-width: 500px;
+            margin: 1rem auto;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        #errorCheck {
+            color: red;
+            font-size: large;
+            text-align: center;
+
+        }
+
+        .req {
+            color: red;
+            font-size: large;
+        }
+
+        label {
+            font-size: larger;
+        }
+
+        input {
+            padding: 17px;
+            font-size: large;
+            border-radius: 15px;
+            width: 50%;
+        }
+
+        .formInput {
+            padding-top: 10px;
+            text-align: center;
+
+        }
+
+        textarea {
+            padding: 17px;
+            font-size: large;
+            border-radius: 15px;
+            width: 50%;
+        }
+
+        #button {
+            padding: 17px;
+            font-weight: bold;
+            font-size: large;
+            border-radius: 15px;
+            background-color: rgb(55, 205, 243);
+            width: 60%;
+        }
+    </style>
 </head>
 
 <body>
-    <form action="">
-        <div>
-            <label for="fName">First Name <span>*</span></label>
-            <input type="text" id="fName" >
+    <form id="form">
+        <h1>Register Form</h1>
+        <div class="formInput">
+            <label for="fName">First Name <span class="req">*</span></label>
         </div>
-        <div>
-            <label for="lName"> Last Name<span>*</span></label>
-            <input type="text" id="lName" >
+        <div class="formInput">
+            <input type="text" id="fName">
+
         </div>
-        <div>
-            <label for="email"> Email<span>*</span></label>
-            <input type="email" id="email" >
+
+
+        <div class="formInput">
+            <label for="lName"> Last Name<span class="req">*</span></label>
         </div>
-        <div>
-            <label for="phone"> Phone Number<span>*</span></label>
-            <input type="text" id="phone" >
+        <div class="formInput">
+            <input type="text" id="lName">
+
         </div>
-        <div>
+        <div class="formInput">
+            <label for="email"> Email<span class="req">*</span></label>
+        </div>
+        <div class="formInput">
+            <input type="email" id="email">
+
+        </div>
+        <div class="formInput">
+            <label for="phone"> Phone Number<span class="req">*</span></label>
+        </div>
+        <div class="formInput">
+            <input type="text" id="phone">
+
+        </div>
+        <div class="formInput">
             <label for="postal"> Postal Code</label>
-            <input type="text" id="zipcode">
         </div>
-        <div>
+        <div class="formInput">
+                    <input type="text" id="zipcode">
+            
+        </div>
+        <div class="formInput">
             <label for="address"> Address</label>
-            <textarea name="address" id="address"></textarea>
         </div>
-        <div>
+        <div class="formInput">
+                    <textarea name="address" id="address"></textarea>
+            
+        </div>
+        <div class="formInput">
             <button type="submit" id="button">submit</button>
         </div>
         <div id="errorCheck"></div>
@@ -48,9 +129,9 @@
         const phone = document.getElementById("phone")
         const zipcode = document.getElementById("zipcode")
         const Address = document.getElementById("address")
-        const button =document.getElementById("button")
-        const error=document.getElementById("errorCheck")
- const result=document.getElementById("result")
+        const button = document.getElementById("button")
+        const error = document.getElementById("errorCheck")
+        const result = document.getElementById("result")
 
 
 
@@ -84,10 +165,10 @@
                 return isValid
             }
         }
-        button.addEventListener("click",()=>{
-
-            validation()
-            result.innerHTML="Form data submitted successfully "
+        button.addEventListener("click", (e) => {
+e.preventDefault()
+           if (validation())
+            result.innerHTML = "Form data submitted successfully "
         })
     </script>
 </body>

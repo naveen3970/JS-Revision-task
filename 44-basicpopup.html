@@ -4,22 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+            .button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(75, 130, 182);
+    width: 30%;
+  }
+   body {
+    background-color: rgb(106, 124, 124);
+  }
 
+  .form {
+    background-color: bisque;
+    padding: 60px;
+    max-width: 400px;
+    margin: 100px auto;
+    border-radius: 20px;
+   text-align: center;
+  }
+  #modal{
+    display: none;
+  }
+  
+    </style>
 </head>
 <body>
-    <button onclick="openModal()">Open</button>
- 
-<div id="modal" >
-<p>Hello User</p>
-<button onclick="closeModal()">close</button>
-</div>
+    <form class="form"> 
+
+
+        <button onclick="openModal() " class="button">Open</button>
+     
+    <div id="modal" >
+    <p>Hello User!</p>
+    <button onclick="closeModal()" class="button">close</button>
+    </div>
+    </form>
  
 <script>
 function openModal(){
+    event.preventDefault()
 document.getElementById("modal").style.display="block";
 }
  
 function closeModal(){
+        event.preventDefault()
+
 document.getElementById("modal").style.display="none";
 }
 </script>

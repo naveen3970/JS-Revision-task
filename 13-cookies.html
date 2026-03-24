@@ -5,15 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+          body {
+    background-color: rgb(73, 192, 192);
+   
+  }
+    .form {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+  #result{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #c74d1d;
+  }
+  #result1{
+    font-weight: bold;
+    font-size: larger;
+    padding-top: 20px;
+    color: #c74d1d;
+  }
+      #button {
+
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(69, 72, 73);
+    width: 60%;
+    color: white;
+  }
+    #label {
+            font-size: x-large;
+        }
+
+        #input {
+            padding: 17px;
+            font-size: large;
+            border-radius: 15px;
+            width: 50%;
+        }
+      
+         .formInput {
+            padding-top: 10px;
+            text-align: center;
+
+        }
+    </style>
 </head>
 
 <body>
-    <form>
-        <div>
-            <label for=""> Enter the Number:</label>
-            <input type="text" id="input">
+    <form class="form">
+        <h1>Cookies Counter</h1>
+        <div class="formInput">
+            <label for="input" id="label"> Enter the Input:</label>
         </div>
-        <button type="button" id="button">Submit</button>
+        <div class="formInput">
+            <input type="text" id="input">
+
+        </div>
+        <div class="formInput">
+
+            <button type="button" id="button">Submit</button>
+        </div>
         <div id="result"></div>
     </form>
     <script>

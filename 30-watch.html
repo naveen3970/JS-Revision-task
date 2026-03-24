@@ -1,32 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(73, 192, 192);
+
+        }
+
+        #form {
+            background-color: white;
+            text-align: center;
+            padding: 60px;
+            max-width: 500px;
+            margin: 9rem auto;
+            border-radius: 15px;
+            text-align: center;
+            display: block;
+        }
+
+        #result {
+            font-weight: bold;
+            font-size: larger;
+            padding-top: 20px;
+            color: #2bc71d;
+        }
+
+
+        label {
+            font-size: x-large;
+        }
+
+        input {
+            padding: 17px;
+            font-size: large;
+            border-radius: 15px;
+            width: 50%;
+        }
+         .formInput {
+            padding-top: 10px;
+            text-align: center;
+
+        }
+          button {
+    display: block;
+    margin: 0 auto; 
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(75, 130, 182);
+    width: 55%;
+  }
+  #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+    padding-top: 40px;
+  }
+    </style>
 </head>
+
 <body>
-     <div>
+    <div id="form">
+        <div class="formInput">
+
             <label for="password">Enter the time</label>
+        </div>
+        <div class="formInput">
+
             <input type="number" id="time">
         </div>
-        <button id="btn" onclick="timer()">get sec</button>
-        <div id="result">
+        <div class="formInput">
 
+            <button id="btn" onclick="timer()">get sec</button>
         </div>
-        <script>
-            
-function timer(){
-    let t=document.getElementById("time").value
-let sec=setInterval(()=>{
-    document.getElementById("result").innerHTML="countdown"+t
-    t--
-    if(t<=0){
-clearInterval(sec)
-    }
-},1000)
+        <div id="result" class="formInput">
+            <div id="errorCheck" class="formInput"></div>
+        </div>
 
- }
-        </script>
+    </div>
+    <script>
+
+        function timer() {
+            let t = document.getElementById("time").value
+         
+            let sec = setInterval(() => {
+                document.getElementById("result").innerHTML = "countdown" + t
+                t--
+                if (t <= 0) {
+                    clearInterval(sec)
+                }
+            }, 1000)
+
+        }
+    
+    </script>
 </body>
+
 </html>

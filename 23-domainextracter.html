@@ -5,18 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  .form {
+    background-color: rgb(159, 218, 148);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+    #error {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(75, 130, 182);
+    width: 55%;
+  }
+
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+    
+  }
+  label{
+    font-size: x-large;
+  }
+    input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+
+</style>
 </head>
 
-<body>
-    <div>
+<body><form class="form">
+
+    <div class="formInput">
         <label for="text">Enter the mail id</label>
-        <input type="email" name="email" id="emailInput">
     </div>
-    <div>
+    <div class="formInput">
+        <input type="email" name="email" id="emailInput">
+
+    </div>
+    <div class="formInput">
         <button type="button" id="button">Extract</button>
     </div>
-    <div id="output"> </div>
-    <div id="error"> </div>
+    <div id="output" class="formInput"> </div>
+    <div id="error" class="formInput"> </div>
+</form>
     <script>
         const email = document.getElementById("emailInput")
         const button = document.getElementById("button")

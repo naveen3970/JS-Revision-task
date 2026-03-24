@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+              #list {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        ul {
+  background: powderblue;
+  padding: 20px;
+  
+}
+.drag{
+    display: flex;
+    justify-content: center;
+    margin: 200px auto;
+    
+}
+
+ul li {
+  background: mistyrose;
+  color: darkblue;
+  margin: 5px;
+  
+}
+    </style>
+</head>
+<body>
+    <div class="drag">
+
+        <ul id="list">
+     <li draggable="true">Task A</li>
+     <li draggable="true">Task B</li>
+     <li draggable="true">Task C</li>
+    </ul>
+    </div>
+ 
+ <script >
+let dragItem;
+ 
+document.querySelectorAll("#list li").forEach(item => {
+    item.addEventListener("dragstart", () => dragItem = item);
+ 
+    item.addEventListener("dragover", e => e.preventDefault());
+ 
+    item.addEventListener("drop", function(){
+        this.parentNode.insertBefore(dragItem, this);
+    });
+});
+</script>
+</body>
+</html>

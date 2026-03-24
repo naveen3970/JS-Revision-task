@@ -5,21 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    body {
+    background-color: rgb(223, 241, 241);
+  }
+
+  .form {
+    background-color: rgb(159, 218, 148);
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+    #errorCheck {
+    color: red;
+    font-size: larger;
+    text-align: center;
+   
+  }
+    #button {
+    padding: 17px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 15px;
+    background-color: rgb(75, 130, 182);
+    width: 55%;
+  }
+
+  .formInput{
+    padding-top: 20px;
+    text-align: center;
+    
+  }
+  label{
+    font-size: x-large;
+  }
+    input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 15px; 
+    width: 50%;
+  }
+  #result{
+    font-weight: bold;
+    font-size: large;
+  }
+
+</style>
 </head>
 
 <body>
-    <form action="">
-        <div>
-            <label for=""> Enter the minimum range:</label>
+    <form class="form">
+        <h1>Random Number Generator</h1>
+        <div class="formInput">
+            <label for="min"> Enter the minimum range:</label>
+        </div>
+        <div class="formInput">
+            
             <input type="text" id="min">
         </div>
-        <div>
-            <label for=""> Enter the maximum range :</label>
-            <input type="text" id="max">
+        <div class="formInput">
+            <label for="max"> Enter the maximum range :</label>
         </div>
-        <div id="errorCheck"></div>
-        <button type="button" id="button">Generate</button>
-        <div id="result"></div>
+        <div class="formInput">
+            <input type="text" id="max">
+
+        </div>
+        <div id="errorCheck" class="formInput"></div>
+        <div class="formInput">
+
+            <button type="button" id="button">Generate</button>
+        </div>
+        <div id="result" class="formInput"></div>
     </form>
     <script>
         const minrange = document.getElementById("min")
@@ -27,11 +86,34 @@
         const error = document.getElementById("errorCheck")
         const button = document.getElementById("button")
         const result = document.getElementById("result")
+            isValid=true
+function validation(){
+ 
+    if(minrange.value==="" ){
+    error.innerHTML="Enter the range "
+    isValid=false
+    return isValid
+}
+   else if(maxrange.value==="" ){
+    error.innerHTML="Enter the range "
+    isValid=false
+    return isValid
+}
+
+else{
+   
+    error.innerHTML=""
+    isValid=true
+     return isValid
+}
+}
         button.addEventListener("click",()=>{
+            if(validation()){
                 let min=minrange.value
                 let max=maxrange.value
                 let val=Math.floor(Math.random() * (max - min + 1) + min);
-                console.log(val);
+                result.innerHTML=val
+            }
         })
      
     </script>
