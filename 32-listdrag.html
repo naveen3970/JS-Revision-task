@@ -1,57 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-              #list {
-            width: 100px;
-            height: 100px;
-            border: 1px solid black;
-        }
-        ul {
-  background: powderblue;
-  padding: 20px;
-  
-}
-.drag{
-    display: flex;
-    justify-content: center;
-    margin: 200px auto;
-    
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
 
-ul li {
-  background: mistyrose;
-  color: darkblue;
-  margin: 5px;
-  
-}
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .drag {
+        width: 320px;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      ul {
+        list-style: none;
+        padding: 10px;
+      }
+
+      ul li {
+        background: #ffffff;
+        color: #333;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        cursor: grab;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      ul li:hover {
+        transform: scale(1.05);
+        background: #f1f5ff;
+      }
+
+      ul li:active {
+        cursor: grabbing;
+        background: #dbeafe;
+      }
+      .dragging {
+        opacity: 0.5;
+        transform: scale(0.95);
+      }
+      .over {
+        border: 2px dashed #fff;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .title {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="drag">
-
-        <ul id="list">
-     <li draggable="true">Task A</li>
-     <li draggable="true">Task B</li>
-     <li draggable="true">Task C</li>
-    </ul>
+      <div class="title">Task Manager</div>
+      <ul id="list">
+        <li draggable="true">Task A</li>
+        <li draggable="true">Task B</li>
+        <li draggable="true">Task C</li>
+      </ul>
     </div>
- 
- <script >
-let dragItem;
- 
-document.querySelectorAll("#list li").forEach(item => {
-    item.addEventListener("dragstart", () => dragItem = item);
- 
-    item.addEventListener("dragover", e => e.preventDefault());
- 
-    item.addEventListener("drop", function(){
-        this.parentNode.insertBefore(dragItem, this);
-    });
-});
-</script>
-</body>
+
+    <script>
+      let dragItem;
+
+      document.querySelectorAll("#list li").forEach((item) => {
+        item.addEventListener("dragstart", () => {
+          dragItem = item;
+          item.classList.add("dragging");
+        });
+
+        item.addEventListener("dragend", () => {
+          item.classList.remove("dragging");
+        });
+
+        item.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          item.classList.add("over");
+        });
+
+        item.addEventListener("dragleave", () => {
+          item.classList.remove("over");
+        });
+
+        item.addEventListener("drop", function () {
+          this.classList.remove("over");
+          this.parentNode.insertBefore(dragItem, this);
+        });
+      });
+    </script>
+  </body>
 </html>

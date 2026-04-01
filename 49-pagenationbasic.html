@@ -6,31 +6,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+#pagination {
+    margin-top: 15px;
+}
+
+.page-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.page-btn:hover {
+    background: #f1f5ff;
+    transform: scale(1.1);
+}
+
+.active-page {
+    background: #5b86e5;
+    color: white;
+}
+
+#list {
+    margin-bottom: 15px;
+}
+.item {
+    background: #ffffff;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 12px;
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: #f8faff;
+}
+
+.item {
+    border-left: 5px solid #5b86e5;
+}
+</style>
 </head>
 <body>
+    <div class="container">
     <div id="list"></div>
-<button onclick="prev()">Prev</button>
-<button onclick="next()">Next</button>
+    <div id="pagination"></div>
+</div>
  
 <script>
 let data = Array.from({length:50}, (_,i)=>"Item "+(i+1));
- 
+
 let page = 1;
 let perPage = 10;
- 
+let totalPages = Math.ceil(data.length / perPage);
+
 function show(){
     let start = (page-1)*perPage;
     let items = data.slice(start, start+perPage);
- 
-    document.getElementById("list").innerHTML = items.join("<br>");
+
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+
+    items.forEach(item => {
+        let div = document.createElement("div");
+        div.className = "item";
+        div.innerText = item;
+        list.appendChild(div);
+    });
+
+    renderPagination();
 }
- 
-function next(){ if(page<5){
-    page++;
+
+function renderPagination(){
+    let container = document.getElementById("pagination");
+    container.innerHTML = "";
+
+    for(let i = 1; i <= totalPages; i++){
+        let span = document.createElement("span");
+        span.innerText = i;
+        span.className = "page-btn";
+
+        if(i === page){
+            span.classList.add("active-page");
+        }
+
+        span.onclick = () => {
+            page = i;
+            show();
+        };
+
+        container.appendChild(span);
+    }
 }
-     show(); }
-function prev(){ if(page>1) page--; show(); }
- 
+
 show();
 
 </script>

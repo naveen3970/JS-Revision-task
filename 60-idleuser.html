@@ -1,59 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Idle Timeout Modal</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:40px;
 }
-    </style>
+
+/* Modal background */
+#modal{
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+/* Modal box */
+.modal-content{
+
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+width:300px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+animation:popup .3s ease;
+
+}
+
+button{
+
+padding:8px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:15px;
+margin-right:10px;
+font-size:14px;
+
+}
+
+.yes{
+
+background:#28a745;
+color:white;
+
+}
+
+.yes:hover{
+
+background:#218838;
+
+}
+
+.no{
+
+background:#dc3545;
+color:white;
+
+}
+
+.no:hover{
+
+background:#c82333;
+
+}
+
+input{
+
+padding:8px;
+margin-top:10px;
+width:250px;
+
+}
+
+
+
+</style>
+
 </head>
+
 <body>
-     <div>
-        <label for="text">Enter the Name</label>
-        <input type="text" name="name" id="name">
-    </div>
-    <div id="modal" >
-<p>Are You Still there?</p>
-<button onclick="closeModal()">yes</button>
+
+<label>Enter the Name</label>
+<br>
+<input type="text" id="name">
+
+<div id="modal">
+
+<div class="modal-content">
+
+<h3> Session Timeout</h3>
+
+<p>Are you still there?</p>
+
+<button class="yes" onclick="closeModal()">Yes</button>
+
+<button class="no" onclick="ref()">Logout</button>
 
 </div>
-    <script>
-        let timer;
- 
+
+</div>
+
+<script>
+
+let timer;
+
 function resetTimer(){
 
-    clearTimeout(timer);
- 
-    timer = setTimeout(openModal,5000);
+clearTimeout(timer);
+
+timer = setTimeout(openModal,5000);
+
 }
+
 function openModal(){
-document.getElementById("modal").style.display="block";
-setTimeout(ref,3000)
+
+document.getElementById("modal").style.display="flex";
+
+timer = setTimeout(ref,3000);
+
 }
+
 function closeModal(){
+
 document.getElementById("modal").style.display="none";
+
+resetTimer();
+
 }
+
 function ref(){
-    alert("logout")
- window.location.reload()
+
+alert("Logged out due to inactivity");
+
+window.location.reload();
+
 }
- 
+
 window.onload = resetTimer;
+
 document.onmousemove = resetTimer;
+
 document.onkeypress = resetTimer;
-    </script>
+
+</script>
+
 </body>
+
 </html>

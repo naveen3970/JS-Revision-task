@@ -10,6 +10,10 @@
 <style>
   body {
     background-color: rgb(106, 124, 124);
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
     
   }
 
@@ -17,7 +21,6 @@
     background-color: bisque;
     padding: 60px;
     max-width: 500px;
-    margin: 300px auto;
     border-radius: 20px;
    
   }
@@ -113,19 +116,41 @@
     if (validation()) {
       let input = sentence.value
       let arr = input.split(" ")
+      if(arr.length<=1){
+        document.getElementById("inputError").innerHTML = "Enter the more than 1 word "
+      }
 
-
+else{
+  let a = /^[a-zA-Z\s]*$/
+  if(a.test(input)){
       const max = arr.reduce((acc, initial) => {
         return initial.length > acc.length ? initial : acc;
       }, arr[0]);
       const min = arr.reduce((acc, initial) => {
         return initial.length < acc.length ? initial : acc;
       }, arr[0]);
+      
+      if(max.length===min.length){
+        document.getElementById("inputError").innerHTML = "same length of the string not to be accepted"
+        document.getElementById("minlength").innerHTML =""
+        document.getElementById("maxlength").innerHTML = ""
+      }
+      else{
       document.getElementById("maxlength").innerHTML = "Max Length word: " + max
 
       document.getElementById("minlength").innerHTML = "Min Length word: " + min
-
+      
     }
+  }
+  else{
+  document.getElementById("inputError").innerHTML = "Enter only the string"
+        document.getElementById("maxlength").innerHTML = ""
+
+    document.getElementById("minlength").innerHTML =""
+}
+}
+  
+  }
   })
 </script>
 

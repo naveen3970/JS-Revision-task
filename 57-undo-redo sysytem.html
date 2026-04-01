@@ -1,46 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undo Redo</title>
+
+<style>
+
+body{
+font-family:Arial;
+background-color: aqua;
+padding:40px;
+}
+
+input{
+padding:10px;
+width:300px;
+font-size:16px;
+margin-top:10px;
+}
+
+button{
+padding:8px 15px;
+margin-top:15px;
+margin-right:10px;
+cursor:pointer;
+}
+ .container {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+</style>
+
 </head>
+
 <body>
-    <div>
-        <label for="text">Enter the text</label>
-    </div>
+<div class="container">
+
+    <label>Enter the text</label>
+    
     <div>
         <input type="text" id="inputText" autofocus>
     </div>
+    
+    <button onclick="undo()">Undo</button>
+    <button onclick="redo()">Redo</button>
+</div>
 
- 
-<button onclick="undo()">Undo</button>
-<button onclick="redo()">Redo</button>
- 
 <script>
 
 let input = document.querySelector("input");
- 
-let undoStack = [];
+
+let undoStack = [""];
 let redoStack = [];
- 
-input.addEventListener("input", ()=>{
-    undoStack.push(input.value);
+
+input.addEventListener("input",()=>{
+
+undoStack.push(input.value);
+redoStack = [];
+
 });
- 
+
 function undo(){
-    if(undoStack.length){
-        redoStack.push(input.value);
-        input.value = undoStack.pop();
-    }
+
+if(undoStack.length > 1){
+
+redoStack.push(undoStack.pop());
+
+input.value = undoStack[undoStack.length-1];
+
 }
- 
+
+}
+
 function redo(){
-    if(redoStack.length){
-        undoStack.push(input.value);
-        input.value = redoStack.pop();
-    }
+
+if(redoStack.length){
+
+let value = redoStack.pop();
+
+undoStack.push(value);
+
+input.value = value;
+
 }
+
+}
+
 </script>
+
 </body>
 </html>

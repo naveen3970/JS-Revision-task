@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-            .button {
-    padding: 17px;
-    font-weight: bold;
-    font-size: large;
-    border-radius: 15px;
-    background-color: rgb(75, 130, 182);
-    width: 30%;
-  }
-   body {
-    background-color: rgb(106, 124, 124);
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal</title>
 
-  .form {
-    background-color: bisque;
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.form {
+    background: white;
     padding: 60px;
     max-width: 400px;
     margin: 100px auto;
     border-radius: 20px;
-   text-align: center;
-  }
-  #modal{
-    display: none;
-  }
-  
-    </style>
+    text-align: center;
+}
+
+.button {
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    background: #5b86e5;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #3f6ad8;
+}
+
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    
+}
+
+</style>
+
 </head>
 <body>
-    <form class="form"> 
 
+<div class="form">
+    <button type="button" onclick="openModal()" class="button">Open</button>
+</div>
 
-        <button onclick="openModal() " class="button">Open</button>
-     
-    <div id="modal" >
-    <p>Hello User!</p>
-    <button onclick="closeModal()" class="button">close</button>
+<!-- Modal -->
+
+    <div class="modal-content">
+        <p>Hello User! 👋</p>
+        <br>
+        <button onclick="closeModal()" class="button">Close</button>
     </div>
-    </form>
- 
+
+
 <script>
 function openModal(){
-    event.preventDefault()
-document.getElementById("modal").style.display="block";
+    document.getElementById("modal").style.display = "flex";
 }
- 
-function closeModal(){
-        event.preventDefault()
 
-document.getElementById("modal").style.display="none";
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
 }
+
 </script>
+
 </body>
 </html>

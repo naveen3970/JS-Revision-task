@@ -97,7 +97,9 @@ else{
 button.addEventListener("click",(e)=>{
    e.preventDefault()
     if(validation()){
-       let text=input.value
+      let text=input.value
+       let a = /^[a-zA-Z\s]*$/
+  if(a.test(text)){
        if(text.charAt(0)===text.charAt(text.length-1)){
 result.innerHTML="both first and last characters are same"
        }
@@ -105,7 +107,11 @@ result.innerHTML="both first and last characters are same"
         result.innerHTML="first and last characters are not same"
        }
     }
-   
+    else{
+      error.innerHTML="Enter the string "
+      result.innerHTML=""
+    }
+    } 
 })
 </script>
 </body>

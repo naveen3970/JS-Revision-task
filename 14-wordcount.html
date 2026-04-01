@@ -80,7 +80,7 @@
         isValid=true
 function validation(){
     if(input.value==="" ){
-    error.innerHTML="Enter the Number "
+    error.innerHTML="Enter the sentence "
     isValid=false
     return isValid
 }
@@ -94,12 +94,24 @@ else{
 }
 }
 button.addEventListener("click",()=>{
-    if(validation()){
-        let sentence=input.value
-        let arr=sentence.split(" ")
-       result.innerHTML="total words: "+arr.length
-        
-    }
+
+if(validation()){
+
+let sentence = input.value.trim()
+let words = sentence.match(/[A-Za-z]+/g)
+
+if(words){
+
+result.innerHTML = "Total words: " + words.length
+
+}else{
+
+result.innerHTML = "Total words: 0"
+
+}
+
+}
+
 })
     </script>
  </body>

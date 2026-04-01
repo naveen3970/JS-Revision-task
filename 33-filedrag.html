@@ -5,6 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #36d1dc, #5b86e5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #drop {
+        width: 350px;
+        height: 200px;
+        border: 2px dashed #ffffff;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 18px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    #drop:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+    #drop.dragover {
+        border: 2px solid #fff;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    #fileName {
+        margin-top: 20px;
+        font-size: 18px;
+        color: white;
+        background: rgba(0,0,0,0.3);
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+</style>
 </head>
 <body>
     <div id="drop" style="border:2px dashed black;padding:20px;">
@@ -20,8 +73,35 @@ drop.addEventListener("dragover", e => e.preventDefault());
 
 drop.addEventListener("drop", function(e){
     e.preventDefault();
-    let file = e.dataTransfer.files[0];
-document.getElementById("fileName").innerText = file.name;
+   let drop = document.getElementById("drop");
+
+drop.addEventListener("dragover", e => {
+    e.preventDefault();
+    drop.classList.add("dragover");
+});
+
+drop.addEventListener("dragleave", () => {
+    drop.classList.remove("dragover");
+});
+
+drop.addEventListener("drop", function(e){
+    e.preventDefault();
+    drop.classList.remove("dragover");
+
+    let files = e.dataTransfer.files;
+    if (files.length > 1) {
+        document.getElementById("fileName").innerText = "Please upload only ONE file";
+        return;
+    }
+    if (files.length === 0) {
+        document.getElementById("fileName").innerText = "❌ No file selected";
+        return;
+    }
+
+    let file = files[0];
+    document.getElementById("fileName").innerText = 
+        ` Uploaded: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+});
     
         
    

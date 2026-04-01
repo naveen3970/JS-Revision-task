@@ -1,84 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Board</title>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
-        .container {
-            width: 40%;
-            height: 300px;
-            border: 1px solid black;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        #ele {
-            display: flex;
-            justify-content: center;
-            padding-top: 100px;
-            text-align: center;
-        }
-                 body {
-    background-color: rgb(73, 192, 192);
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#board {
+    display: flex;
+    gap: 30px;
+}
+.box {
+    width: 250px;
+    min-height: 350px;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+.label {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.3);
+}
+p {
+    background: white;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: grab;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+p:hover {
+    transform: scale(1.05);
+}
+
+p:active {
+    cursor: grabbing;
    
-  }
-   .label{
-    font-size: x-large;
-    background-color: white;
-  }
-  p{
-    padding-top: 7px;
-  }
-    </style>
-    </head>
-    <body>
-        <style>
-        .box{
-width:100px;
-height:100px;
-border:1px solid black;
-        }
-        #ele{
-            display: flex;
-            justify-content: center;
-            padding-top: 100px;
-        }
-    </style>
-<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
-     <div class="label">
-                <label for="text">TODO task</label>
+}
+.box.dragover {
+    border: 2px dashed white;
+    background: rgba(255,255,255,0.35);
+}
+</style>
 
-            </div>
-<p draggable="true" ondragstart="drag(event)" id="task1">Task 1</p>
-<p draggable="true" ondragstart="drag(event)" id="task1">Task 2</p>
-<p draggable="true" ondragstart="drag(event)" id="task1">Task 3</p>
-<p draggable="true" ondragstart="drag(event)" id="task1">Task 4</p>
-</div>
- 
-<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
-<div class="label">
-                <label for="text">Progressing task</label>
+</head>
+<body>
 
-            </div>
-</div>
-<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
-<div class="label">
-                <label for="text">completed task</label>
+<div id="board">
 
-            </div>
+    <!-- TODO -->
+    <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="label">TODO</div>
+        <p draggable="true" ondragstart="drag(event)" id="task1">Task 1</p>
+        <p draggable="true" ondragstart="drag(event)" id="task2">Task 2</p>
+        <p draggable="true" ondragstart="drag(event)" id="task3">Task 3</p>
+        <p draggable="true" ondragstart="drag(event)" id="task4">Task 4</p>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="label">IN PROGRESS</div>
+    </div>
+
+    <!-- DONE -->
+    <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="label">COMPLETED</div>
+    </div>
+
 </div>
-<script >
-function allowDrop(e){ e.preventDefault(); }
- 
+
+<script>
+function allowDrop(e){
+    e.preventDefault();
+    e.currentTarget.classList.add("dragover");
+}
+
 function drag(e){
     e.dataTransfer.setData("text", e.target.id);
 }
- 
+
 function drop(e){
     e.preventDefault();
+    e.currentTarget.classList.remove("dragover");
+
     let data = e.dataTransfer.getData("text");
-    e.target.appendChild(document.getElementById(data));
+    let target = e.currentTarget;
+
+    target.appendChild(document.getElementById(data));
 }
 </script>
-    </body>
-    </html>
+
+</body>
+</html>

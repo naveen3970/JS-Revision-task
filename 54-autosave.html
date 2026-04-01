@@ -1,23 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Data</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.container {
+    background: white;
+    padding: 60px;
+    max-width: 400px;
+    margin: 100px auto;
+    border-radius: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    background: #5b86e5;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #3f6ad8;
+}
+ input{
+    padding: 17px;
+    font-size: large;
+    border-radius: 20px; 
+    width: 80%;
+  }
+</style>
 </head>
+
 <body>
-    <input id="name">
-<input id="email">
- 
- <script>
-let name = document.getElementById("name");
-let email = document.getElementById("email");
- 
-name.value = localStorage.getItem("name") || "";
-email.value = localStorage.getItem("email") || "";
- 
-name.oninput = ()=>localStorage.setItem("name", name.value);
-email.oninput = ()=>localStorage.setItem("email", email.value);
+    <form class="container">
+
+        <div>
+            
+            <input id="name" placeholder="Enter name">
+        </div>
+        <div>
+            
+            <input id="email" placeholder="Enter email">
+        </div>
+        <div>
+            
+            <button onclick="saveData()">Save</button>
+        </div>
+    </form>
+
+<script>
+let nameInput = document.getElementById("name");
+let emailInput = document.getElementById("email");
+
+window.onload = function () {
+    nameInput.value = localStorage.getItem("name") || "";
+    emailInput.value = localStorage.getItem("email") || "";
+};
+
+function saveData() {
+    localStorage.setItem("name", nameInput.value);
+    localStorage.setItem("email", emailInput.value);
+
+    alert("Data Saved ");
+}
 </script>
+
 </body>
 </html>

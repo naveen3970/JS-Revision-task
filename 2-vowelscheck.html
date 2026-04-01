@@ -100,7 +100,9 @@ else{
 button.addEventListener("click",(e)=>{
    e.preventDefault()
     if(validation()){
-        let letter=input.value.toLowerCase()
+      let letter=input.value.toLowerCase()
+       let a = /[a-zA-Z\s]/
+  if(a.test(letter)){
        if(letter==='a'||letter==='e'||letter==='i'||letter==='o'||letter==='u'){
  result.innerHTML=`Letter "${letter}" is vowel`
        }
@@ -108,6 +110,10 @@ button.addEventListener("click",(e)=>{
         result.innerHTML=`Letter "${letter}" is not a vowel`
     }
     }
+  else{
+    error.innerHTML="Enter the letter "
+    result.innerHTML=""
+  }}
    
 })
 </script>

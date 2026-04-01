@@ -97,6 +97,8 @@ button.addEventListener("click",(e)=>{
    e.preventDefault()
     if(validation()){
         let text=input.value
+               let a = /^[a-zA-Z\s]*$/
+  if(a.test(text)){
 
         let string=""
 for (let i = 0; i < text.length; i++) {
@@ -107,6 +109,11 @@ result.innerHTML="Reversed string:"+string;
 
 
     }
+  else{
+    error.innerHTML="Enter the string "
+    result.innerHTML=""
+  }
+  }
    
 })
 </script>

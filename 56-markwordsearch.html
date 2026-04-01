@@ -2,33 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>filter</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filter Highlight</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:40px;
+    background-color: aqua;
+
+}
+
+input{
+    padding:8px;
+    width:250px;
+    margin-top:10px;
+    border-radius: 10px;
+}
+
+#result{
+    margin-top:20px;
+    font-size:20px;
+}
+
+mark{
+    background:yellow;
+    padding:3px;
+}
+ .container {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+    max-width: 500px;
+    margin: 9rem auto;
+    border-radius: 15px;
+   text-align: center;
+  }
+
+</style>
+
 </head>
 
 <body>
-    <div>
 
-        <label for="input">Enter the product:</label>
-        <input type="text" id="value">
-        <div id="result"></div>
-    </div>
-    <script>
-        const input = document.getElementById("value")
-        let text= "learn the react and javascript"
-        let arr=text.split(" ")
-        console.log(arr);
-        
-        input.addEventListener("input", (e) => {
-                let output = arr.forEach((item) => {
-                    if (item.includes(e.target.value))
-            document.getElementById("result").innerHTML=`<mark>${item}</mark>`
-            })
-            
-            
-        })
-    </script>
+<div class="container">
+    <label>Enter word:</label>
+<input type="text" id="value">
+
+<div id="result"></div>
+</div>
+
+<script>
+
+const input = document.getElementById("value")
+
+let text = "i love my country"
+
+document.getElementById("result").innerText = text
+
+input.addEventListener("input",(e)=>{
+
+let word = e.target.value
+
+if(word===""){
+document.getElementById("result").innerText=text
+return
+}
+
+let regex = new RegExp(word,"gi")
+
+let highlighted = text.replace(regex,
+match => `<mark>${match}</mark>`)
+
+document.getElementById("result").innerHTML = highlighted
+
+})
+
+</script>
+
 </body>
 
 </html>
